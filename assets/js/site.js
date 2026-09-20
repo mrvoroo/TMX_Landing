@@ -15,9 +15,6 @@
 		document.documentElement.lang = lang;
 		applyLanguage(lang);
 		updateLangToggle(lang);
-		if (window.TMX_ADMIN && typeof window.TMX_ADMIN.onLangChange === 'function') {
-			window.TMX_ADMIN.onLangChange(lang);
-		}
 	}
 
 	function t(lang, path) {
