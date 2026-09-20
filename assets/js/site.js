@@ -222,13 +222,16 @@
 				.then(function (result) {
 					if (!status) return;
 					if (result.ok && result.data && result.data.success) {
-						status.textContent = t(lang, 'contact.success');
+						var successMsg = t(lang, 'contact.success');
+						status.textContent = successMsg;
 						status.className = 'form-status is-success';
 						form.reset();
+						if (typeof window.alert === 'function') {
+							window.alert(successMsg);
+						}
 					} else {
-						var apiMsg = result.data && result.data.message ? result.data.message : '';
-						console.error('Web3Forms submission error:', result.status, apiMsg);
-						status.textContent = apiMsg ? apiMsg : t(lang, 'contact.error');
+						console.error('Web3Forms submission error:', result.status, result.data);
+						status.textContent = t(lang, 'contact.error');
 						status.className = 'form-status is-error';
 					}
 					status.hidden = false;

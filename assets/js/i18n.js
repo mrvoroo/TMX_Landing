@@ -185,8 +185,8 @@ window.TMX_I18N = {
 			reset: 'Zurücksetzen',
 			serviceNote:
 				'Sie werden von einem Spezialisten in diesem Bereich kontaktiert.',
-			success: 'Vielen Dank! Ihre Nachricht wurde gesendet.',
-			error: 'Senden fehlgeschlagen. Bitte versuchen Sie es später erneut.',
+			success: 'Wir haben Ihre E-Mail erhalten und werden uns bei Ihnen melden.',
+			error: 'Beim Senden der E-Mail ist ein Problem aufgetreten.',
 		},
 		footer: {
 			tagline: 'Entwicklung · KI · Marketing · IT-Beratung',
@@ -375,8 +375,8 @@ window.TMX_I18N = {
 			submit: 'Send message',
 			reset: 'Reset',
 			serviceNote: 'You will be contacted by a specialist in this area.',
-			success: 'Thank you! Your message has been sent.',
-			error: 'Sending failed. Please try again later.',
+			success: 'We Got your Email and will get back to you',
+			error: 'There is an Issue sending the Email',
 		},
 		footer: {
 			tagline: 'Development · AI · Marketing · IT consulting',
