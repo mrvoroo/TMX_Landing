@@ -121,6 +121,28 @@
 		var status = document.getElementById('form-status');
 		if (!form) return;
 
+		var consentCheckbox = document.getElementById('privacy-consent');
+		var submitBtn = document.getElementById('contact-submit') || form.querySelector('input[type="submit"]');
+
+		function updateSubmitState() {
+			if (submitBtn && consentCheckbox) {
+				submitBtn.disabled = !consentCheckbox.checked;
+			}
+		}
+
+		if (consentCheckbox) {
+			consentCheckbox.addEventListener('change', updateSubmitState);
+			updateSubmitState();
+		}
+
+		form.addEventListener('reset', function () {
+			window.setTimeout(function () {
+				if (consentCheckbox) consentCheckbox.checked = false;
+				if (submitBtn) submitBtn.disabled = true;
+				if (status) status.hidden = true;
+			}, 0);
+		});
+
 		form.addEventListener('click', function (e) {
 			e.stopPropagation();
 		});
@@ -128,6 +150,17 @@
 		form.addEventListener('submit', function (e) {
 			e.preventDefault();
 			e.stopPropagation();
+
+			if (!consentCheckbox || !consentCheckbox.checked) {
+				if (status) {
+					status.textContent = 'Bitte stimmen Sie der Datenschutzerklärung zu.';
+					status.className = 'form-status is-error';
+					status.hidden = false;
+				}
+				if (submitBtn) submitBtn.disabled = true;
+				return;
+			}
+
 			if (WEB3FORMS_ACCESS_KEY === 'YOUR_WEB3FORMS_ACCESS_KEY') {
 				if (status) {
 					status.textContent =
@@ -139,12 +172,17 @@
 			}
 
 			var lang = getLang();
-			var fd = new FormData(form);
-			fd.set('access_key', WEB3FORMS_ACCESS_KEY);
-			var serviceKey = fd.get('service');
-			if (serviceKey) {
-				fd.set('subject', 'Anfrage: ' + t(lang, 'items.' + serviceKey + '.title'));
-			}
+			// Ensure only name, email, message are collected
+			var nameVal = (form.elements['name'] ? form.elements['name'].value : '').trim();
+			var emailVal = (form.elements['email'] ? form.elements['email'].value : '').trim();
+			var msgVal = (form.elements['message'] ? form.elements['message'].value : '').trim();
+
+			var fd = new FormData();
+			fd.append('access_key', WEB3FORMS_ACCESS_KEY);
+			fd.append('name', nameVal);
+			fd.append('email', emailVal);
+			fd.append('message', msgVal);
+			fd.append('subject', 'Neue Kontaktanfrage über tmxmagmafy.de');
 
 			if (status) {
 				status.hidden = true;
@@ -164,7 +202,7 @@
 						status.textContent = t(lang, 'contact.success');
 						status.className = 'form-status is-success';
 						form.reset();
-						document.getElementById('service-note').hidden = true;
+						updateSubmitState();
 					} else {
 						status.textContent = t(lang, 'contact.error');
 						status.className = 'form-status is-error';

@@ -217,7 +217,7 @@
 				<article id="contact" class="article-scroll">
 					<h2 class="major" data-i18n="contact.title">Kontakt</h2>
 					<p data-i18n="contact.intro">Beschreiben Sie Ihr Anliegen – wir melden uns zeitnah bei Ihnen.</p>
-					<form id="contact-form" method="post">
+					<form id="contact-form" method="post" action="https://api.web3forms.com/submit">
 						<div class="fields">
 							<div class="field half">
 								<label for="name" data-i18n="contact.name">Name</label>
@@ -227,22 +227,17 @@
 								<label for="email" data-i18n="contact.email">E-Mail</label>
 								<input type="email" name="email" id="email" required autocomplete="email" />
 							</div>
-							<div class="field half">
-								<label for="phone" data-i18n="contact.phone">Telefon (optional)</label>
-								<input type="tel" name="phone" id="phone" autocomplete="tel" />
-							</div>
-							<div class="field half">
-								<label for="service" data-i18n="contact.service">Gewünschte Leistung</label>
-								<select name="service" id="service"></select>
-							</div>
 							<div class="field">
 								<label for="message" data-i18n="contact.message">Nachricht</label>
 								<textarea name="message" id="message" rows="4" required></textarea>
 							</div>
+							<div class="field field-checkbox">
+								<input type="checkbox" id="privacy-consent" name="privacy_consent" required />
+								<label for="privacy-consent">Ich habe die <a href="datenschutz/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und stimme zu</label>
+							</div>
 						</div>
-						<p id="service-note" hidden data-i18n="contact.serviceNote">Sie werden von einem Spezialisten in diesem Bereich kontaktiert.</p>
 						<ul class="actions">
-							<li><input type="submit" value="Nachricht senden" class="primary" data-i18n-value="contact.submit" /></li>
+							<li><input type="submit" id="contact-submit" value="Nachricht senden" class="primary" data-i18n-value="contact.submit" disabled /></li>
 							<li><input type="reset" value="Zurücksetzen" data-i18n-value="contact.reset" /></li>
 						</ul>
 						<p id="form-status" class="form-status" hidden role="status"></p>

@@ -1088,3 +1088,42 @@ body.is-legal-page #wrapper {
 		margin: 0.25rem 0.4rem;
 	}
 }
+
+/* ==========================================================================
+   9. CONTACT FORM COMPLIANCE & CHECKBOX
+   ========================================================================== */
+.field-checkbox {
+	margin: 1.25rem 0 1rem 0 !important;
+	width: 100% !important;
+}
+
+.field-checkbox input[type="checkbox"] + label {
+	font-size: 0.82rem !important;
+	line-height: 1.45 !important;
+	color: rgba(255, 255, 255, 0.88) !important;
+	text-transform: none !important;
+	letter-spacing: 0 !important;
+	display: inline-block !important;
+	cursor: pointer;
+}
+
+.field-checkbox input[type="checkbox"] + label a {
+	color: #ffffff !important;
+	text-decoration: underline !important;
+	border-bottom: none !important;
+}
+
+.field-checkbox input[type="checkbox"] + label a:hover {
+	color: #ffffff !important;
+	opacity: 0.8;
+}
+
+input[type="submit"]:disabled,
+button:disabled {
+	opacity: 0.45 !important;
+	cursor: not-allowed !important;
+	transform: none !important;
+	box-shadow: none !important;
+	border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
