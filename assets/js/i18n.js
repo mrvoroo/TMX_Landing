@@ -8,6 +8,40 @@ window.TMX_I18N = {
 			description:
 				'TMX Magmafy: Webentwicklung, Künstliche Intelligenz, Digitales Marketing und IT-Beratung aus Deutschland. Finden Sie Ihre Leistung und kontaktieren Sie uns.',
 		},
+		sectionMeta: {
+			intro: {
+				title: 'Intro – TMX Magmafy | Digitale Produkte, KI & Marketing',
+				description: 'Digitale Produkte, Künstliche Intelligenz und Marketing aus einer Hand – strategisch, skalierbar und made in Germany.',
+			},
+			about: {
+				title: 'Über uns – TMX Magmafy | IT-Exzellenz & Business-Fokus',
+				description: 'Erfahren Sie mehr über TMX Magmafy: Partnerschaftliche Umsetzung, technische Exzellenz und skalierbare Lösungen aus Deutschland.',
+			},
+			services: {
+				title: 'Leistungen – TMX Magmafy | Entwicklung, KI, Marketing & IT',
+				description: 'Vier Schwerpunkte im Überblick: Web- und App-Entwicklung, Künstliche Intelligenz, Digitales Marketing und professionelle IT-Beratung.',
+			},
+			'services-entwicklung': {
+				title: 'Entwicklung – TMX Magmafy | Websites, Apps & Shops',
+				description: 'Websites, Web-Apps, E-Commerce-Shops und interne Softwaresysteme – durchdacht gebaut, wartbar und performant.',
+			},
+			'services-ki': {
+				title: 'Künstliche Intelligenz – TMX Magmafy | KI-Lösungen & Automation',
+				description: 'Maßgeschneiderte KI-Lösungen, KI-Systemintegration, KI-Workshops und intelligente Prozessautomatisierung.',
+			},
+			'services-marketing': {
+				title: 'Digitales Marketing – TMX Magmafy | Kampagnen & KI-Content',
+				description: 'Datengetriebenes Performance-Marketing, Social-Media-Automatisierung, KI-gestützte Datenanalysen und Content-Erstellung.',
+			},
+			'services-it': {
+				title: 'IT & Beratung – TMX Magmafy | IT-Services & Consulting',
+				description: 'Stabile IT-Infrastruktur, professionelle IT-Services und digitale Unternehmensberatung für zukunftsfähige Systeme.',
+			},
+			contact: {
+				title: 'Kontakt – TMX Magmafy | Jetzt unverbindlich anfragen',
+				description: 'Nehmen Sie Kontakt mit TMX Magmafy auf. Beschreiben Sie Ihr Projekt – wir melden uns zeitnah bei Ihnen.',
+			},
+		},
 		langLabel: 'Sprache',
 		ui: {
 			close: 'Schließen',
@@ -164,6 +198,40 @@ window.TMX_I18N = {
 			title: 'TMX Magmafy – Development, AI, Marketing & IT Consulting',
 			description:
 				'TMX Magmafy: web development, artificial intelligence, digital marketing, and IT consulting from Germany. Find your service and get in touch.',
+		},
+		sectionMeta: {
+			intro: {
+				title: 'Intro – TMX Magmafy | Digital Products, AI & Marketing',
+				description: 'Digital products, artificial intelligence, and marketing from one partner—strategic, scalable, and based in Germany.',
+			},
+			about: {
+				title: 'About Us – TMX Magmafy | IT Excellence & Business Focus',
+				description: 'Learn about TMX Magmafy: German engineering excellence, transparent communication, and solutions tailored to your business goals.',
+			},
+			services: {
+				title: 'Services – TMX Magmafy | Development, AI, Marketing & IT',
+				description: 'Four core areas: Web and app development, artificial intelligence solutions, digital marketing, and IT consulting.',
+			},
+			'services-entwicklung': {
+				title: 'Development – TMX Magmafy | Websites, Apps & E-Commerce',
+				description: 'Websites, scalable apps, e-commerce stores, and internal dashboard systems built with performance and maintainability.',
+			},
+			'services-ki': {
+				title: 'Artificial Intelligence – TMX Magmafy | AI Solutions & Automation',
+				description: 'Custom AI solutions, system integration, team workshops, and intelligent workflow automation.',
+			},
+			'services-marketing': {
+				title: 'Digital Marketing – TMX Magmafy | Campaigns & AI Content',
+				description: 'Data-driven marketing, campaign management, AI content creation, and automated social media workflows.',
+			},
+			'services-it': {
+				title: 'IT & Consulting – TMX Magmafy | IT Services & Digital Strategy',
+				description: 'Reliable IT services, digital infrastructure consulting, and architecture planning for scalable growth.',
+			},
+			contact: {
+				title: 'Contact – TMX Magmafy | Get in Touch',
+				description: 'Contact TMX Magmafy. Tell us about your project requirements—our team will get back to you promptly.',
+			},
 		},
 		langLabel: 'Language',
 		ui: {

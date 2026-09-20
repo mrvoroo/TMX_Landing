@@ -27,13 +27,25 @@
 		return cur || '';
 	}
 
+	function updatePageSEO(lang) {
+		var dict = window.TMX_I18N[lang];
+		if (!dict) return;
+
+		var hash = (window.location.hash || '').replace(/^#/, '');
+		var metaData = (hash && dict.sectionMeta && dict.sectionMeta[hash]) ? dict.sectionMeta[hash] : dict.meta;
+
+		if (metaData) {
+			document.title = metaData.title;
+			var metaDesc = document.querySelector('meta[name="description"]');
+			if (metaDesc) metaDesc.setAttribute('content', metaData.description);
+		}
+	}
+
 	function applyLanguage(lang) {
 		var dict = window.TMX_I18N[lang];
 		if (!dict) return;
 
-		document.title = dict.meta.title;
-		var metaDesc = document.querySelector('meta[name="description"]');
-		if (metaDesc) metaDesc.setAttribute('content', dict.meta.description);
+		updatePageSEO(lang);
 
 		document.querySelectorAll('[data-i18n]').forEach(function (el) {
 			var key = el.getAttribute('data-i18n');
@@ -227,6 +239,13 @@
 	window.setTimeout(function () {
 		applyLanguage(getLang());
 	}, 0);
+
+	window.addEventListener('hashchange', function () {
+		updatePageSEO(getLang());
+	});
+	window.addEventListener('popstate', function () {
+		updatePageSEO(getLang());
+	});
 
 	window.applyTMXLanguage = applyLanguage;
 	window.getTMXLang = getLang;
