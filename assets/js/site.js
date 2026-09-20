@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 
-	var WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY';
+	var WEB3FORMS_ACCESS_KEY = '61827a29-34be-47f7-922a-0e93bc707870';
 	var STORAGE_KEY = 'tmx-lang';
 	var DEFAULT_LANG = 'de';
 
@@ -189,44 +189,60 @@
 			var emailVal = (form.elements['email'] ? form.elements['email'].value : '').trim();
 			var msgVal = (form.elements['message'] ? form.elements['message'].value : '').trim();
 
-			var fd = new FormData();
-			fd.append('access_key', WEB3FORMS_ACCESS_KEY);
-			fd.append('name', nameVal);
-			fd.append('email', emailVal);
-			fd.append('message', msgVal);
-			fd.append('subject', 'Neue Kontaktanfrage über tmxmagmafy.de');
+			var payload = {
+				access_key: WEB3FORMS_ACCESS_KEY,
+				name: nameVal,
+				email: emailVal,
+				message: msgVal,
+				subject: 'Neue Kontaktanfrage über tmxmagmafy.de'
+			};
 
 			if (status) {
 				status.hidden = true;
 				status.className = 'form-status';
 			}
 
+			if (submitBtn) submitBtn.disabled = true;
+
 			fetch('https://api.web3forms.com/submit', {
 				method: 'POST',
-				body: fd,
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				},
+				body: JSON.stringify(payload)
 			})
 				.then(function (res) {
-					return res.json();
+					return res.json().then(function (data) {
+						return { ok: res.ok, status: res.status, data: data };
+					}).catch(function () {
+						return { ok: res.ok, status: res.status, data: null };
+					});
 				})
-				.then(function (data) {
+				.then(function (result) {
 					if (!status) return;
-					if (data.success) {
+					if (result.ok && result.data && result.data.success) {
 						status.textContent = t(lang, 'contact.success');
 						status.className = 'form-status is-success';
 						form.reset();
-						updateSubmitState();
 					} else {
-						status.textContent = t(lang, 'contact.error');
+						var apiMsg = result.data && result.data.message ? result.data.message : '';
+						console.error('Web3Forms submission error:', result.status, apiMsg);
+						status.textContent = apiMsg ? apiMsg : t(lang, 'contact.error');
 						status.className = 'form-status is-error';
 					}
 					status.hidden = false;
 				})
-				.catch(function () {
+				.catch(function (err) {
+					console.error('Fetch request error:', err);
 					if (status) {
 						status.textContent = t(lang, 'contact.error');
 						status.className = 'form-status is-error';
 						status.hidden = false;
 					}
+				})
+				.finally(function () {
+					updateSubmitState();
 				});
 		});
 	}

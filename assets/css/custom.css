@@ -1346,4 +1346,101 @@ body.tmx-admin-active [contenteditable="true"]:focus {
 	}
 }
 
+/* ==========================================================================
+   11. MOBILE RESPONSIVENESS REFINEMENTS (SCOPED BUG FIXES)
+   ========================================================================== */
+
+/* Global safety net for horizontal overflow */
+html,
+body {
+	overflow-x: hidden;
+}
+
+/* BUG 1: Language toggle overlap on mobile headers */
+@media screen and (max-width: 768px) {
+	#lang-fixed {
+		z-index: 999999 !important;
+	}
+
+	#main article {
+		padding-top: 5.5rem !important;
+	}
+
+	#main article h2.major {
+		margin-top: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#main article {
+		padding-top: 5.75rem !important;
+		padding-left: 1.25rem !important;
+		padding-right: 1.25rem !important;
+	}
+}
+
+/* BUG 2: Prevent horizontal scroll & content overflowing viewport */
+@media screen and (max-width: 768px) {
+	#wrapper,
+	#main,
+	#main article {
+		max-width: 100% !important;
+		box-sizing: border-box !important;
+	}
+
+	h1.major,
+	h2.major,
+	h3.major,
+	h4.major,
+	h5.major,
+	h6.major {
+		width: auto !important;
+		max-width: 100% !important;
+		box-sizing: border-box !important;
+		overflow-wrap: break-word !important;
+		word-break: normal !important;
+		letter-spacing: 0.22rem !important;
+		font-size: 1.25rem !important;
+		line-height: 1.4 !important;
+	}
+
+	.features,
+	.features li {
+		max-width: 100% !important;
+		box-sizing: border-box !important;
+		overflow-wrap: break-word !important;
+		word-break: normal !important;
+	}
+
+	.features h3,
+	.features h4,
+	.features p {
+		overflow-wrap: break-word !important;
+		word-break: normal !important;
+		max-width: 100% !important;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	h1.major,
+	h2.major,
+	h3.major,
+	h4.major,
+	h5.major,
+	h6.major {
+		letter-spacing: 0.15rem !important;
+		font-size: 1.1rem !important;
+	}
+}
+
+/* BUG 3: Eliminate double/nested vertical scroll on mobile */
+@media screen and (max-width: 768px) {
+	#main article.article-scroll {
+		max-height: none !important;
+		height: auto !important;
+		overflow-y: visible !important;
+	}
+}
+
+
 
