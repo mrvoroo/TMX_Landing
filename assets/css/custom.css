@@ -1128,3 +1128,222 @@ button:disabled {
 	border-color: rgba(255, 255, 255, 0.25) !important;
 }
 
+/* ==========================================================================
+   10. HIDDEN ADMIN EDITING PANEL (ISOLATED CLIENT-SIDE STYLES)
+   ========================================================================== */
+body.tmx-admin-active [contenteditable="true"] {
+	cursor: text !important;
+	transition: outline 0.15s ease, background-color 0.15s ease;
+}
+
+body.tmx-admin-active [contenteditable="true"]:hover {
+	outline: 1.5px dashed rgba(255, 255, 255, 0.6) !important;
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+body.tmx-admin-active [contenteditable="true"]:focus {
+	outline: 2px solid #ffffff !important;
+	outline-offset: 3px;
+	background: rgba(255, 255, 255, 0.08) !important;
+	border-radius: 4px;
+}
+
+/* Modal Overlay */
+.admin-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(10, 14, 18, 0.8);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	z-index: 10000000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.admin-modal-dialog {
+	position: relative;
+	background: rgba(22, 26, 31, 0.95);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1.5px solid rgba(255, 255, 255, 0.45);
+	border-radius: 10px;
+	padding: 2.25rem 2rem;
+	width: 100%;
+	max-width: 26rem;
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+	text-align: left;
+}
+
+.admin-modal-dialog h3 {
+	font-size: 1.15rem;
+	letter-spacing: 0.1rem;
+	margin: 0 0 0.5rem 0;
+	color: #ffffff;
+}
+
+.admin-modal-dialog .admin-modal-sub {
+	font-size: 0.85rem;
+	line-height: 1.45;
+	color: rgba(255, 255, 255, 0.75);
+	margin-bottom: 1.25rem;
+}
+
+.admin-modal-dialog input[type="password"] {
+	width: 100%;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	color: #ffffff;
+	border-radius: 6px;
+	padding: 0.6rem 0.85rem;
+	font-size: 0.9rem;
+}
+
+.admin-modal-dialog .admin-modal-close {
+	position: absolute;
+	top: 0.85rem;
+	right: 0.85rem;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	color: #ffffff;
+	font-size: 1.5rem;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0.25rem 0.5rem;
+}
+
+.admin-error-msg {
+	color: #ff6b6b;
+	font-size: 0.82rem;
+	margin: 0.5rem 0 0 0;
+}
+
+/* Floating Toolbar */
+.admin-floating-bar {
+	position: fixed;
+	bottom: 1.5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 9999999;
+	width: auto;
+	max-width: 95vw;
+	background: rgba(22, 26, 31, 0.92);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1.5px solid rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+	box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+	padding: 0.65rem 1rem;
+}
+
+.admin-bar-inner {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.admin-bar-badge {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.72rem;
+	letter-spacing: 0.12rem;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+
+.admin-indicator {
+	width: 8px;
+	height: 8px;
+	background: #28a745;
+	border-radius: 50%;
+	display: inline-block;
+	box-shadow: 0 0 8px #28a745;
+}
+
+.admin-bar-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.admin-bar-actions .button.small {
+	height: 2.25rem !important;
+	line-height: 2.25rem !important;
+	padding: 0 0.85rem !important;
+	font-size: 0.68rem !important;
+	letter-spacing: 0.08rem !important;
+}
+
+.admin-bar-actions .button.is-exit {
+	border-color: rgba(255, 100, 100, 0.5) !important;
+}
+
+.admin-bar-actions .button.is-exit:hover {
+	background-color: rgba(220, 53, 69, 0.3) !important;
+	border-color: rgba(255, 120, 120, 0.9) !important;
+}
+
+/* Toast Notifications */
+.admin-toast {
+	position: fixed;
+	top: 2rem;
+	right: 2rem;
+	z-index: 10000001;
+	background: rgba(22, 26, 31, 0.95);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	border: 1px solid rgba(40, 167, 69, 0.8);
+	border-radius: 6px;
+	padding: 0.75rem 1.25rem;
+	color: #ffffff;
+	font-size: 0.85rem;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-10px);
+	transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.admin-toast.is-visible {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+.admin-toast.is-error {
+	border-color: rgba(220, 53, 69, 0.8);
+}
+
+@media screen and (max-width: 600px) {
+	.admin-floating-bar {
+		bottom: 1rem;
+		padding: 0.5rem 0.75rem;
+		width: 95vw;
+	}
+	.admin-bar-inner {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.admin-bar-actions .button.small {
+		padding: 0 0.5rem !important;
+		font-size: 0.62rem !important;
+	}
+	.admin-toast {
+		top: 1rem;
+		right: 1rem;
+		left: 1rem;
+		text-align: center;
+	}
+}
+
+
